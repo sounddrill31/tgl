@@ -1,0 +1,10 @@
+# pixi environments
+.pixi/*
+!.pixi/config.toml
+*.md
+!README.md
+index.html
+absurd-industries
+download-*
+mono
+out/

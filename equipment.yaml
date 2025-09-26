@@ -1,0 +1,28 @@
+- name: Yihua 878D
+  specs:
+    - "Soldering Iron for through-hole and SMD work"
+    - "Hot Air Rework for SMD removal and reflow"
+    - "Digital Temperature Calibration"
+  award: "3rd Place - Won in collaboration with Team Burn the Hardware/Absurd Industries in LionCircuits x PCBCupid's 1st Hardware Hackathon"
+- name: DM81 Multimeter
+  specs:
+    - "Measures Voltage (AC/DC), Current (AC/DC), Resistance, Capacitance"
+    - "Continuity buzzer for checking traces"
+    - "Diode and Transistor test modes"
+- name: A Mountain of Electronics
+  specs:
+    - "Dev Boards: Arduino Uno, ESP32, Raspberry Pi Pico"
+    - "Sensors: IMUs, Temp/Humidity, Light, Sound, etc"
+    - "Connectors: Dupont, USB breakouts and A Mountain of Tangled Cables"
+- name: Dev Laptop - Vostro 3468
+  specs:
+    - "CPU: Intel Core i3-7130U (2 Cores, 2.7GHz)"
+    - "RAM: 8GB DDR4"
+    - "GPU: Default iGPU"
+    - "OS: OpenSUSE Tumbleweed (Linux) with Niri WM"
+- name: Custom PC
+  specs:
+    - "CPU: Intel Core i5-6500 (4 Cores, 3.2GHz)"
+    - "RAM: 16GB DDR4"
+    - "GPU: Default iGPU"
+    - "OS: Windows 10 Pro"

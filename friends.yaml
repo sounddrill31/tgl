@@ -1,0 +1,14 @@
+- name: "Souhrud Reddy"
+  url: "https://sounddrill31.github.io"
+  photo_url: "https://avatars.githubusercontent.com/u/84176052?v=4"
+  description: "The human BDFL and primary maintainer of TGL. Tinkers with hardware and code."
+  affiliation:
+    type: "Lab"
+    name: "Tomorrow's Gadget Lab"
+- name: "Joel Paul"
+  url: "https://jack-pots.github.io"
+  photo_url: "https://avatars.githubusercontent.com/u/142168122?v=4"
+  description: "Active Contributor of TGL. Started to tinker with hardware and code."
+  affiliation:
+    type: "Lab"
+    name: "Tomorrow's Gadget Lab"

@@ -1,0 +1,25 @@
+- name: Sidekick
+  description: "A handy Open Source buddy that you carry with you everywhere, a sidekick for your daily adventures!"
+  collab: "uteam4 burn_The_hardware = (TGL 🤝 Absurd_Industries);"
+  links:
+    - text: Homepage
+      url: https://meetsidekick.tech
+      enabled: true
+      disabled_text: "Coming Soon"
+    - text: Docs
+      url: https://engineering.meetsidekick.tech
+      enabled: true
+      disabled_text: "Coming Soon"
+    - text: Buy
+      url: https://meetsidekick.tech/buy
+      enabled: false
+      disabled_text: "Launching Soon!"
+- name: Plant Guardian
+  description: "An expressive plant watcher, vigilantly monitoring soil health! "
+  collab: "uteam4 burn_The_hardware = (TGL 🤝 Absurd_Industries);"
+  award: "3rd Place - Won in collaboration with Members of Absurd Industries in LionCircuits x PCBCupid's 1st Hardware Hackathon"
+  links:
+    - text: Homepage
+      url: https://guardian.layogtima.com/
+      enabled: true
+      disabled_text: "Coming Soon"

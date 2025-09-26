@@ -1,0 +1,24 @@
+site_name: "TGL"
+site_subtitle: "Tomorrow's Gadget Lab" # name subject to change
+tagline: "We 😍 Open Source"
+
+work_title: "Work So Far"
+equipment_title: "Equipment on Hand"
+community_title: "Join Us"
+community_subtitle: "Find us on Discord, or send a carrier pigeon."
+friends_title: "Friends & Collaborators"
+
+discord_link: "https://discord.gg/6EEAucZD5G"
+contact_email: "mailto:souhrudreddy@gmail.com"
+
+footer_maintainer: "Maintained by Souhrud Reddy"
+footer_maintainer_url: "https://sounddrill31.github.io"
+
+friends_cta_text: "Don't see yourself here? We're all friends through Open Source!"
+friends_cta_link_text: "Add yourself!"
+friends_cta_link_url: "https://github.com/tomorrow-gadget-lab/website/edit/main/friends.yaml"
+
+# Metadata for SEO and Social Media Embeds
+metadata:
+  canonical_url: "https://tgl.pages.dev" # Replace with your actual domain
+  description: "Tomorrow's Gadget Lab (TGL) is an open-source focused lab exploring the future of hardware, software, and people."
