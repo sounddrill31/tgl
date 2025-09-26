@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site_name }} - {{ site_subtitle }}</title>
+
+    <!-- SEO & Metadata -->
+    <link rel="canonical" href="{{ metadata.canonical_url }}">
+    <meta name="description" content="{{ metadata.description }}">
+
+    <!-- Open Graph -->
+    <meta property="og:url" content="{{ metadata.canonical_url }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ site_name }}">
+    <meta property="og:description" content="{{ metadata.description }}">
+    {% if metadata.og_image_url %}
+    <meta property="og:image" content="{{ metadata.og_image_url }}">
+    {% endif %}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="{{ metadata.canonical_url }}">
+    <meta property="twitter:url" content="{{ metadata.canonical_url }}">
+    <meta name="twitter:title" content="{{ site_name }}">
+    <meta name="twitter:description" content="{{ metadata.description }}">
+    {% if metadata.og_image_url %}
+    <meta name="twitter:image" content="{{ metadata.og_image_url }}">
+    {% endif %}
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(139, 92, 246, 0.1) 0%, transparent 25%),
+                radial-gradient(circle at 80% 90%, rgba(59, 130, 246, 0.1) 0%, transparent 25%);
+        }
+        .syne-font { font-family: "Syne", sans-serif; }
+        .space-mono-font { font-family: "Space Mono", monospace; }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(-1deg); }
+        }
+        .floating-hero {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-purple': '#8B5CF6',
+                        'brand-teal': '#2DD4BF',
+                        'brand-dark': '#111827',
+                    },
+                    fontFamily: {
+                        sans: ['Syne', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-dark text-gray-300 antialiased">
+
+    <div id="app" class="container mx-auto p-4 sm:p-8">
+
+        <!-- HEADER -->
+        <header class="text-center my-16">
+            <div class="floating-hero inline-block p-4">
+                <h1 class="syne-font text-5xl sm:text-7xl font-extrabold text-white">
+                    {{ site_name }}
+                </h1>
+                <p class="space-mono-font text-lg text-brand-teal mt-2">{{ tagline }}</p>
+            </div>
+            <p class="text-sm text-gray-500 mt-2">{{ site_subtitle }}</p>
+        </header>
+
+        <main class="space-y-24">
+            <!-- WORK SECTION -->
+            <section id="work">
+                <h2 class="syne-font text-4xl font-bold text-center mb-12 text-white">{{ work_title }}</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+                    {{ projects | safe }}
+                </div>
+            </section>
+
+            <!-- EQUIPMENT SECTION -->
+            <section id="equipment">
+                <h2 class="syne-font text-4xl font-bold text-center mb-12 text-white">{{ equipment_title }}</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {{ equipment | safe }}
+                </div>
+            </section>
+
+            <!-- COMMUNITY & CONTACT -->
+            <section id="community" class="text-center py-16">
+                <h2 class="syne-font text-4xl font-bold text-white mb-4">{{ community_title }}</h2>
+                <p class="text-lg text-gray-400 mb-8">{{ community_subtitle }}</p>
+                <div class="flex justify-center items-center gap-6">
+                    <a href="{{ discord_link }}" target="_blank" rel="noopener noreferrer" class="bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
+                        Discord Community
+                    </a>
+                    <a href="{{ contact_email }}" class="bg-teal-600 hover:bg-teal-500 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
+                        Email Contact
+                    </a>
+                </div>
+            </section>
+
+            <!-- FRIENDS SECTION -->
+            <section id="friends">
+                <h2 class="syne-font text-4xl font-bold text-center mb-12 text-white">{{ friends_title }}</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    {{ friends | safe }}
+                </div>
+                <div class="text-center mt-12">
+                    <p class="text-gray-400">{{ friends_cta_text }}</p>
+                    <a href="{{ friends_cta_link_url }}" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-teal-400 transition font-mono">
+                        {{ friends_cta_link_text }}
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="text-center py-12 mt-16 border-t border-gray-800">
+            <p class="text-gray-500">{{ footer_maintainer }}</p>
+            <a href="{{ footer_maintainer_url }}" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-teal-400 transition">
+                {{ footer_maintainer_url }}
+            </a>
+        </footer>
+
+    </div>
+</body>
+</html>
