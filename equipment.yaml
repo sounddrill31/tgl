@@ -11,9 +11,9 @@
     - "Diode and Transistor test modes"
 - name: A Mountain of Electronics
   specs:
-    - "Dev Boards: Arduino Uno, ESP32, Raspberry Pi Pico"
+    - "Dev Boards: Arduinos, ESP32s, Pi Picos, etc"
     - "Sensors: IMUs, Temp/Humidity, Light, Sound, etc"
-    - "Connectors: Dupont, USB breakouts and A Mountain of Tangled Cables"
+    - "Connectors: Dupont/Jumper Cables, Breadboards, USB Breakouts and a Mountain of Tangled Cables"
 - name: Dev Laptop - Vostro 3468
   specs:
     - "CPU: Intel Core i3-7130U (2 Cores, 2.7GHz)"
