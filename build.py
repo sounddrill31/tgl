@@ -54,9 +54,9 @@ def generate_equipment_html(equipments):
         rotation = "rotate-1" if i % 2 == 0 else "-rotate-1"
 
         html += f"""
-        <div x-data="{{ open: false }}" @click="open = !open" class="bg-gray-800/50 backdrop-blur-sm border border-purple-400/20 rounded-xl p-6 transform {rotation} hover:rotate-0 hover:scale-105 transition-transform duration-300 ease-in-out shadow-lg shadow-purple-500/10 cursor-pointer" @mouseenter="open = true" @mouseleave="open = false">
-            <h3 class="text-xl font-bold text-purple-300">{item["name"]}</h3>
-            <div x-show="open" x-transition class="mt-2">
+        <div x-data=\"{{ open: false }}\" class=\"bg-gray-800/50 backdrop-blur-sm border border-purple-400/20 rounded-xl p-6 transform {rotation} hover:rotate-0 hover:scale-105 transition-transform duration-300 ease-in-out shadow-lg shadow-purple-500/10 cursor-pointer\" @mouseenter=\"open = true\" @mouseleave=\"open = false\" @click=\"open = !open\">
+            <h3 class=\"text-xl font-bold text-purple-300\">{item["name"]}</h3>
+            <div x-show=\"open\" x-transition class=\"mt-2\">
                 {specs_html}
                 {award_html}
             </div>
