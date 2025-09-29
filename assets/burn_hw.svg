@@ -1,0 +1,15 @@
+<svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="120" height="40" fill="#1A1B26"/>
+
+  <g font-family="monospace" text-anchor="middle">
+    
+    <text x="60" y="20" font-size="12" fill="#00FFFF" letter-spacing="4">BURN</text>
+    
+    <rect x="35" y="24" width="50" height="1" fill="#FFCB6B"/>
+    
+    <text x="60" y="32" font-size="6" fill="#C0CAF5" letter-spacing="2">HARDWARE</text>
+    
+    <circle cx="8" cy="8" r="1.5" fill="#C0CAF5" fill-opacity="0.5"/>
+    
+  </g>
+</svg>

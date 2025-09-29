@@ -12,3 +12,9 @@
   affiliation:
     type: "Lab"
     name: "Tomorrow's Gadget Lab"
+- name: "Burn That Hardware"
+  photo_url: "https://cdn.jsdelivr.net/gh/sounddrill31/tgl@main/assets/burn_hw.svg "
+  description: "A collaboration between <a href='https://absurd.industries' target='_blank'>Absurd.Industries</a> and TGL"
+  affiliation:
+    type: "Collaboration"
+    name: "Burn That Hardware"

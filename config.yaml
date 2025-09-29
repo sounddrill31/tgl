@@ -14,7 +14,7 @@ contact_email: "mailto:souhrudreddy@gmail.com"
 footer_maintainer: "Maintained by Souhrud Reddy"
 footer_maintainer_url: "https://sounddrill31.github.io"
 
-friends_cta_text: "Don't see yourself here? We're all friends through Open Source!"
+friends_cta_text: "Don't see yourself here? We're all friends through Open Source! (List order and alignment is randomised on each deployment)"
 friends_cta_link_text: "Add yourself!"
 friends_cta_link_url: "https://github.com/tomorrow-gadget-lab/website/edit/main/friends.yaml"
 

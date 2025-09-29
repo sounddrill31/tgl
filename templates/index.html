@@ -118,14 +118,17 @@
             <!-- FRIENDS SECTION -->
             <section id="friends">
                 <h2 class="syne-font text-4xl font-bold text-center mb-12 text-white">{{ friends_title }}</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {{ friends | safe }}
-                </div>
-                <div class="text-center mt-12">
+
+                <div class="text-center mt-12 mb-8 space-y-2">
                     <p class="text-gray-400">{{ friends_cta_text }}</p>
                     <a href="{{ friends_cta_link_url }}" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-teal-400 transition font-mono">
                         {{ friends_cta_link_text }}
                     </a>
+                </div>
+                
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    {{ friends | safe }}
                 </div>
             </section>
         </main>
