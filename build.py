@@ -16,7 +16,19 @@ def generate_project_html(projects):
         links_html = ""
         for link in project.get("links", []):
             if link.get("enabled"):
-                links_html += f'<a href="{link["url"]}" target="_blank" rel="noopener noreferrer" class="inline-block bg-gray-700 hover:bg-purple-500 text-teal-300 font-semibold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">{link["text"]}</a>'
+                # Special case: on-click: copy (YAML uses on_click, but we want on-click)
+                if link.get("on-click") == "copy":
+                    value_to_copy = link.get("url") or link.get("copy") or link.get("text") or ""
+                    links_html += f'<button type="button" onclick="navigator.clipboard.writeText(\'{value_to_copy}\'); var old=this.innerText; this.innerText=\'Copied!\'; setTimeout(()=>this.innerText=old, 1200);" class="inline-block bg-gray-700 hover:bg-purple-500 text-teal-300 font-semibold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">{link.get("text", "Copy")}</button>'
+                # If on-click is present, use it as JS handler
+                elif "on-click" in link:
+                    links_html += f'<a href="#" onclick="{link["on-click"]}" class="inline-block bg-gray-700 hover:bg-purple-500 text-teal-300 font-semibold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">{link["text"]}</a>'
+                # If url is present, use it
+                elif "url" in link and link["url"]:
+                    links_html += f'<a href="{link["url"]}" target="_blank" rel="noopener noreferrer" class="inline-block bg-gray-700 hover:bg-purple-500 text-teal-300 font-semibold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">{link["text"]}</a>'
+                # If neither, copy the text and show indication
+                else:
+                    links_html += f'<button type="button" onclick="navigator.clipboard.writeText(\'{link.get("copy", link.get("text", ""))}\'); var old=this.innerText; this.innerText=\'Copied!\'; setTimeout(()=>this.innerText=old, 1200);" class="inline-block bg-gray-700 hover:bg-purple-500 text-teal-300 font-semibold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">{link.get("text", "Copy")}</button>'
             else:
                 links_html += f'<span class="inline-block bg-gray-800 text-gray-500 font-semibold py-2 px-4 rounded-lg cursor-not-allowed">{link["disabled_text"]}</span>'
 
@@ -24,10 +36,11 @@ def generate_project_html(projects):
         if "description" in project:
             description_html = f'<pre class="text-gray-300 mt-4 font-sans whitespace-pre-wrap">{project["description"]}</pre>'
 
+        collab_html = f'<p class="text-purple-400 font-mono text-sm my-2">{project["collab"]}</p>' if "collab" in project else ""
         html += f"""
         <div class="bg-gray-800/50 backdrop-blur-sm border border-teal-400/20 rounded-xl p-6 transform -rotate-1 hover:rotate-0 hover:scale-105 transition-transform duration-300 ease-in-out shadow-lg shadow-teal-500/10">
             <h3 class="text-2xl font-bold text-teal-300">{project["name"]}</h3>
-            <p class="text-purple-400 font-mono text-sm my-2">{project["collab"]}</p>
+            {collab_html}
             {description_html}
             <div class="flex flex-wrap gap-4 mt-4">
                 {links_html}

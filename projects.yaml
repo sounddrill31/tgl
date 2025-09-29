@@ -23,3 +23,15 @@
       url: https://guardian.layogtima.com/
       enabled: true
       disabled_text: "Coming Soon"
+- name: Xonotic India
+  description: "A friendly community to play Xonotic in India without (too much) lag and ping!"
+  links:
+    - text: Homepage
+      url: https://india.xonotic.au/
+      enabled: true
+      disabled_text: "Coming Soon"
+    - text: In-Game Server Address
+      on-click: copy
+      url: "155.248.242.127:26000"
+      enabled: true
+      disabled_text: "Coming Soon"
