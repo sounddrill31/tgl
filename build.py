@@ -37,10 +37,12 @@ def generate_project_html(projects):
             description_html = f'<pre class="text-gray-300 mt-4 font-sans whitespace-pre-wrap">{project["description"]}</pre>'
 
         collab_html = f'<p class="text-purple-400 font-mono text-sm my-2">{project["collab"]}</p>' if "collab" in project else ""
+        award_html = f'<p class="text-sm text-yellow-400 font-mono mt-2 animate-pulse">🏅 {project["award"]}</p>' if "award" in project else ""
         html += f"""
         <div class="bg-gray-800/50 backdrop-blur-sm border border-teal-400/20 rounded-xl p-6 transform -rotate-1 hover:rotate-0 hover:scale-105 transition-transform duration-300 ease-in-out shadow-lg shadow-teal-500/10">
             <h3 class="text-2xl font-bold text-teal-300">{project["name"]}</h3>
             {collab_html}
+            {award_html}
             {description_html}
             <div class="flex flex-wrap gap-4 mt-4">
                 {links_html}
