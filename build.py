@@ -1,3 +1,24 @@
+def generate_friends_html(friends):
+    html = ""
+    for i, friend in enumerate(friends):
+        col_span = random.choice(["col-span-1", "col-span-2"])
+        row_span = random.choice(["row-span-1"])
+        img_height = random.choice(["h-40", "h-56", "h-64"])
+
+        card_content = f"""
+        <div class="{row_span} {col_span} bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-4 flex flex-col text-center transform hover:scale-105 transition-transform duration-300 ease-in-out overflow-hidden">
+            <img src="{friend['photo_url']}" alt="{friend['name']}" class="w-full {img_height} object-cover rounded-md mb-4">
+            <h3 class="text-xl font-bold text-white">{friend['name']}</h3>
+            <p class="text-sm text-teal-400 font-mono">{friend['affiliation']['type']}: {friend['affiliation']['name']}</p>
+            <p class="text-gray-400 mt-2 text-sm flex-grow">{friend['description']}</p>
+        </div>
+        """
+
+        if friend.get("url") and friend["url"] != "#":
+            html += f'<a href="{friend["url"]}" target="_blank" rel="noopener noreferrer" class="block">{card_content}</a>'
+        else:
+            html += card_content
+    return html
 
 # build.py
 #
@@ -57,7 +78,7 @@ def generate_equipment_html(equipments):
         award_html = ""
         if "award" in item:
             award_html = f'<p class="text-sm text-yellow-400 font-mono mt-2 animate-pulse">🏅 {item["award"]}</p>'
-        
+
         specs_html = "<ul class='list-disc list-inside text-gray-300 space-y-1 mt-2'>"
         if isinstance(item["specs"], list):
             for spec in item["specs"]:
@@ -68,6 +89,16 @@ def generate_equipment_html(equipments):
 
         rotation = "rotate-1" if i % 2 == 0 else "-rotate-1"
 
+        # Only use icon if present in YAML
+        icon_html = ""
+        if "icon" in item and item["icon"]:
+            icon_val = item["icon"]
+            if icon_val.strip().startswith("<svg"):
+                icon_html = icon_val
+            elif icon_val.strip().startswith("http://") or icon_val.strip().startswith("https://"):
+                icon_html = f'<img src="{icon_val}" alt="icon" width="32" height="32" class="inline-block align-middle" loading="lazy">'
+            # else: ignore
+
         html += f"""
         <div x-data='{{ open: false, isTouch: false }}'
             x-init="isTouch = window.matchMedia('(pointer: coarse)').matches"
@@ -76,41 +107,12 @@ def generate_equipment_html(equipments):
             @mouseleave="if (!isTouch) open = false"
             @click.debounce.300ms="if (isTouch) open = !open"
         >
-            <h3 class=\"text-xl font-bold text-purple-300\">{item["name"]}</h3>
-            <div x-show=\"open\" x-transition class=\"mt-2\">
-                {specs_html}
-                {award_html}
-            </div>
-        </div>
-        """
-    return html
-
-def generate_friends_html(friends):
-    html = ""
-    for i, friend in enumerate(friends):
-        col_span = random.choice(["col-span-1", "col-span-2"])
-        row_span = random.choice(["row-span-1"])
-        img_height = random.choice(["h-40", "h-56", "h-64"])
-
-        card_content = f"""
-        <div class="{row_span} {col_span} bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-4 flex flex-col text-center transform hover:scale-105 transition-transform duration-300 ease-in-out overflow-hidden">
-            <img src="{friend['photo_url']}" alt="{friend['name']}" class="w-full {img_height} object-cover rounded-md mb-4">
-            <h3 class="text-xl font-bold text-white">{friend['name']}</h3>
-            <p class="text-sm text-teal-400 font-mono">{friend['affiliation']['type']}: {friend['affiliation']['name']}</p>
-            <p class="text-gray-400 mt-2 text-sm flex-grow">{friend['description']}</p>
-        </div>
-        """
-
-        if friend.get("url") and friend["url"] != "#":
-            html += f'<a href="{friend["url"]}" target="_blank" rel="noopener noreferrer" class="block">{card_content}</a>'
-        else:
-            html += card_content
-            
+            <div class=\"flex items-center gap-2\">{icon_html}<h3 class=\"text-xl font-bold text-purple-300\">{item["name"]}</h3></div>
+            <div x-show=\"open\" x-transition:enter=\"transition duration-200 ease-out\" x-transition:enter-start=\"opacity-0 scale-95\" x-transition:enter-end=\"opacity-100 scale-100\" x-transition:leave=\"transition duration-150 ease-in\" x-transition:leave-start=\"opacity-100 scale-100\" x-transition:leave-end=\"opacity-0 scale-95\" class=\"mt-2\">\n                {specs_html}\n                {award_html}\n            </div>\n        </div>\n        """
     return html
 
 def main():
     CWD = Path(__file__).parent
-    
     Path(CWD / "out").mkdir(exist_ok=True)
 
     # --- Data Loading ---
@@ -122,7 +124,6 @@ def main():
         equipment_data = yaml.safe_load(f)
     with open(CWD / "friends.yaml", "r") as f:
         friends_data = yaml.safe_load(f)
-    
     random.shuffle(friends_data)
 
     # --- HTML Generation (could be moved to Jinja in the future) ---
@@ -148,7 +149,6 @@ def main():
     output_path = CWD / "out" / "index.html"
     with open(output_path, "w") as f:
         f.write(output_html)
-        
     print(f"✅ Website built successfully! Output at {output_path}")
 
 if __name__ == "__main__":

@@ -1,26 +1,36 @@
+
 - name: Yihua 878D
+  icon: "https://cdn.jsdelivr.net/gh/phosphor-icons/core@main/raw/regular/toolbox.svg"
   specs:
     - "Soldering Iron for through-hole and SMD work"
     - "Hot Air Rework for SMD removal and reflow"
     - "Digital Temperature Calibration"
   award: "3rd Place - Won in collaboration with Team Burn the Hardware/Absurd Industries in LionCircuits x PCBCupid's 1st Hardware Hackathon"
+
 - name: DM81 Multimeter
+  icon: "https://cdn.jsdelivr.net/gh/phosphor-icons/core@main/raw/regular/toolbox.svg"
   specs:
     - "Measures Voltage (AC/DC), Current (AC/DC), Resistance, Capacitance"
     - "Continuity buzzer for checking traces"
     - "Diode and Transistor test modes"
+
 - name: A Mountain of Electronics
+  icon: "https://cdn.jsdelivr.net/gh/phosphor-icons/core@main/raw/regular/circuitry.svg"
   specs:
     - "Dev Boards: Arduinos, ESP32s, Pi Picos, etc"
     - "Sensors: IMUs, Temp/Humidity, Light, Sound, etc"
     - "Connectors: Dupont/Jumper Cables, Breadboards, USB Breakouts and a Mountain of Tangled Cables"
+
 - name: Dev Laptop - Vostro 3468
+  icon: "https://cdn.jsdelivr.net/gh/phosphor-icons/core@main/raw/regular/laptop.svg"
   specs:
     - "CPU: Intel Core i3-7130U (2 Cores, 2.7GHz)"
     - "RAM: 8GB DDR4"
     - "GPU: Default iGPU"
     - "OS: OpenSUSE Tumbleweed (Linux) with Niri WM"
+
 - name: Custom PC
+  icon: "https://cdn.jsdelivr.net/gh/phosphor-icons/core@main/raw/regular/computer-tower.svg"
   specs:
     - "CPU: Intel Core i5-6500 (4 Cores, 3.2GHz)"
     - "RAM: 16GB DDR4"
