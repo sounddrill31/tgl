@@ -1,18 +1,35 @@
 
 - name: Yihua 878D
-  icon: "https://cdn.jsdelivr.net/gh/phosphor-icons/core@main/raw/regular/toolbox.svg"
+  icon: "https://cdn.jsdelivr.net/gh/phosphor-icons/core@main/raw/regular/pencil-simple.svg"
   specs:
     - "Soldering Iron for through-hole and SMD work"
     - "Hot Air Rework for SMD removal and reflow"
     - "Digital Temperature Calibration"
   award: "3rd Place - Won in collaboration with Team Burn the Hardware/Absurd Industries in LionCircuits x PCBCupid's 1st Hardware Hackathon"
 
+- name: ADI M1K SMU
+  icon: "https://cdn.jsdelivr.net/gh/phosphor-icons/core@main/raw/regular/wave-sine.svg"
+  specs:
+    - "Source Measure Unit for precision(ish) voltage and current sourcing/measuring"
+    - "0 to 5V Amplitude, Up to 20kHz Frequency"
+    - "Useful for quickly generating signals for small signal analysis, testing and debugging circuits"
+    - "Includes a basic oscilloscope and waveform generator"
+    - "Purchased for coursework and lab assignments"
+
 - name: DM81 Multimeter
-  icon: "https://cdn.jsdelivr.net/gh/phosphor-icons/core@main/raw/regular/toolbox.svg"
+  icon: "https://cdn.jsdelivr.net/gh/phosphor-icons/core@main/raw/regular/car-battery.svg"
   specs:
     - "Measures Voltage (AC/DC), Current (AC/DC), Resistance, Capacitance"
     - "Continuity buzzer for checking traces"
     - "Diode and Transistor test modes"
+
+- name: Screwdriver Sets and Other Tools
+  icon: "https://cdn.jsdelivr.net/gh/phosphor-icons/core@main/raw/regular/toolbox.svg"
+  specs:
+    - "IKEA Screwdriver Set for Home Electrical Tasks and Larger Electronics"
+    - "Local but good precision screwdriver set for small screws"
+    - "Micrometer for measuring small items"
+    - "Vernier Calipers for precise measurements(Missing in Action/Unindexed)"
 
 - name: A Mountain of Electronics
   icon: "https://cdn.jsdelivr.net/gh/phosphor-icons/core@main/raw/regular/circuitry.svg"
@@ -21,13 +38,19 @@
     - "Sensors: IMUs, Temp/Humidity, Light, Sound, etc"
     - "Connectors: Dupont/Jumper Cables, Breadboards, USB Breakouts and a Mountain of Tangled Cables"
 
+- name: SBCs, Thin Clients and Mini PCs
+  icon: "https://cdn.jsdelivr.net/gh/phosphor-icons/core@main/raw/regular/cpu.svg"
+  specs:
+    - "Raspberry Pi 4B 2GB RAM"
+    - "<a href='https://www.parkytowers.me.uk/thin/wyse/cx0/' target='_blank'>Dell Wyse CX0 Thin Client, C10LE</a>"
+
 - name: Dev Laptop - Vostro 3468
   icon: "https://cdn.jsdelivr.net/gh/phosphor-icons/core@main/raw/regular/laptop.svg"
   specs:
     - "CPU: Intel Core i3-7130U (2 Cores, 2.7GHz)"
     - "RAM: 8GB DDR4"
     - "GPU: Default iGPU"
-    - "OS: OpenSUSE Tumbleweed (Linux) with Niri WM"
+    - "OS: OpenSUSE Tumbleweed (Linux) with Niri Tiling Wayland Compositor"
 
 - name: Custom PC
   icon: "https://cdn.jsdelivr.net/gh/phosphor-icons/core@main/raw/regular/computer-tower.svg"
@@ -36,3 +59,16 @@
     - "RAM: 16GB DDR4"
     - "GPU: Default iGPU"
     - "OS: Windows 10 Pro"
+
+- name: Box of Phones
+  icon: "https://cdn.jsdelivr.net/gh/phosphor-icons/core@main/raw/regular/sim-card.svg"
+  specs:
+    - "(Excluding MIA and Dead Devices)"
+    - "Moto G34 5G, fogos (Locked, Main Daily Driver)"
+    - "Xiaomi Mi Max 2, oxygen (Unlocked, Experimentation Phone)"
+    - "Redmi Note 4, mido (Locked, Missing Battery)"
+    - "Nokia 6, TA-1021/PLE (Locked, Dead Screen)"
+    - "Moto Z Play (Unlocked, Dead Screen)"
+    - "Samsung A7 2017, a7y17lte (Unlocked, Dead Screen/Battery)"
+    - "Lumia 820 (Unlocked, Windows 10 Mobile)"
+    - "Lumia 640 (Locked)"
