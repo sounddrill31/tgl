@@ -117,6 +117,11 @@
                         Telegram (Personal)
                     </a>
                     {% endif %}
+                    {% if contact_signal %}
+                    <a href="{{ contact_signal }}" target="_blank" rel="noopener noreferrer" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
+                        Signal (Personal)
+                    </a>
+                    {% endif %}
                 </div>
                 {% if contact_etiquette %}
                 <div class="max-w-xl mx-auto bg-gray-900/80 border border-gray-700 rounded-lg p-4 text-left text-gray-300 text-sm">
