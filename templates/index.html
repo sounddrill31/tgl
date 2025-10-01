@@ -105,14 +105,25 @@
             <section id="community" class="text-center py-16">
                 <h2 class="syne-font text-4xl font-bold text-white mb-4">{{ community_title }}</h2>
                 <p class="text-lg text-gray-400 mb-8">{{ community_subtitle }}</p>
-                <div class="flex justify-center items-center gap-6">
+                <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-6">
                     <a href="{{ discord_link }}" target="_blank" rel="noopener noreferrer" class="bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
                         Discord Community
                     </a>
                     <a href="{{ contact_email }}" class="bg-teal-600 hover:bg-teal-500 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
-                        Email Contact
+                        Email Contact (Personal)
                     </a>
+                    {% if contact_telegram %}
+                    <a href="{{ contact_telegram }}" target="_blank" rel="noopener noreferrer" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
+                        Telegram (Personal)
+                    </a>
+                    {% endif %}
                 </div>
+                {% if contact_etiquette %}
+                <div class="max-w-xl mx-auto bg-gray-900/80 border border-gray-700 rounded-lg p-4 text-left text-gray-300 text-sm">
+                    <h3 class="font-bold text-teal-400 mb-2">Contact Etiquette</h3>
+                    <pre class="whitespace-pre-line">{{ contact_etiquette }}</pre>
+                </div>
+                {% endif %}
             </section>
 
             <!-- FRIENDS SECTION -->
