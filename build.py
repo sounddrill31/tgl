@@ -73,42 +73,51 @@ def generate_project_html(projects):
     return html
 
 def generate_equipment_html(equipments):
+    # Assume 3 columns per row for desktop (lg:grid-cols-3)
+    num_cols = 3
     html = ""
-    for i, item in enumerate(equipments):
-        award_html = ""
-        if "award" in item:
-            award_html = f'<p class="text-sm text-yellow-400 font-mono mt-2 animate-pulse">🏅 {item["award"]}</p>'
+    # Detect mobile with Alpine.js (isTouch)
+    html += "<div class='contents'>"
+    for row_start in range(0, len(equipments), num_cols):
+        row_equip = equipments[row_start:row_start+num_cols]
+        html += "<div x-data=\"{ showRow: false, isTouch: false, hideTimeout: null }\" x-init=\"isTouch = window.matchMedia('(pointer: coarse)').matches\" class='contents' "
+        html += "@mouseenter=\"if (!isTouch) { if (hideTimeout) clearTimeout(hideTimeout); showRow = true; }\" "
+        html += "@mouseleave=\"if (!isTouch) { hideTimeout = setTimeout(() => { showRow = false; }, 350); }\" "
+        html += ">"
+        for i, item in enumerate(row_equip):
+            award_html = ""
+            if "award" in item:
+                award_html = f'<p class=\"text-sm text-yellow-400 font-mono mt-2 animate-pulse\">🏅 {item["award"]}</p>'
 
-        specs_html = "<ul class='list-disc list-inside text-gray-300 space-y-1 mt-2'>"
-        if isinstance(item["specs"], list):
-            for spec in item["specs"]:
-                specs_html += f"<li>{spec}</li>"
-        else:
-            specs_html += f"<li>{item['specs']}</li>"
-        specs_html += "</ul>"
+            specs_html = "<ul class='list-disc list-inside text-gray-300 space-y-1 mt-2'>"
+            if isinstance(item["specs"], list):
+                for spec in item["specs"]:
+                    specs_html += f"<li>{spec}</li>"
+            else:
+                specs_html += f"<li>{item['specs']}</li>"
+            specs_html += "</ul>"
 
-        rotation = "rotate-1" if i % 2 == 0 else "-rotate-1"
+            rotation = "rotate-1" if (row_start + i) % 2 == 0 else "-rotate-1"
 
-        # Only use icon if present in YAML
-        icon_html = ""
-        if "icon" in item and item["icon"]:
-            icon_val = item["icon"]
-            if icon_val.strip().startswith("<svg"):
-                icon_html = icon_val
-            elif icon_val.strip().startswith("http://") or icon_val.strip().startswith("https://"):
-                icon_html = f'<img src="{icon_val}" alt="icon" width="32" height="32" class="inline-block align-middle" loading="lazy">'
-            # else: ignore
+            # Only use icon if present in YAML
+            icon_html = ""
+            if "icon" in item and item["icon"]:
+                icon_val = item["icon"]
+                if icon_val.strip().startswith("<svg"):
+                    icon_html = icon_val
+                elif icon_val.strip().startswith("http://") or icon_val.strip().startswith("https://"):
+                    icon_html = f'<img src="{icon_val}" alt="icon" width="32" height="32" class="inline-block align-middle" loading="lazy">'
+                # else: ignore
 
-        html += f"""
-        <div x-data='{{ open: false, isTouch: false }}'
-            x-init="isTouch = window.matchMedia('(pointer: coarse)').matches"
-            class=\"bg-gray-800/50 backdrop-blur-sm border border-purple-400/20 rounded-xl p-6 transform {rotation} hover:rotate-0 hover:scale-105 transition-transform duration-300 ease-in-out shadow-lg shadow-purple-500/10 cursor-pointer\"
-            @mouseenter="if (!isTouch) open = true"
-            @mouseleave="if (!isTouch) open = false"
-            @click.debounce.300ms="if (isTouch) open = !open"
-        >
-            <div class=\"flex items-center gap-2\">{icon_html}<h3 class=\"text-xl font-bold text-purple-300\">{item["name"]}</h3></div>
-            <div x-show=\"open\" x-transition:enter=\"transition duration-200 ease-out\" x-transition:enter-start=\"opacity-0 scale-95\" x-transition:enter-end=\"opacity-100 scale-100\" x-transition:leave=\"transition duration-150 ease-in\" x-transition:leave-start=\"opacity-100 scale-100\" x-transition:leave-end=\"opacity-0 scale-95\" class=\"mt-2\">\n                {specs_html}\n                {award_html}\n            </div>\n        </div>\n        """
+            html += f"""
+            <div x-data='{{ open: false }}'
+                class=\"bg-gray-800/50 backdrop-blur-sm border border-purple-400/20 rounded-xl p-6 transform {rotation} hover:rotate-0 hover:scale-105 transition-transform duration-300 ease-in-out shadow-lg shadow-purple-500/10 cursor-pointer\"
+                @click.debounce.300ms=\"if (isTouch) open = !open\"
+            >
+                <div class=\"flex items-center gap-2\">{icon_html}<h3 class=\"text-xl font-bold text-purple-300\">{item["name"]}</h3></div>
+                <div x-show=\"isTouch ? open : showRow\" x-transition:enter=\"transition duration-200 ease-out\" x-transition:enter-start=\"opacity-0 scale-95\" x-transition:enter-end=\"opacity-100 scale-100\" x-transition:leave=\"transition duration-150 ease-in\" x-transition:leave-start=\"opacity-100 scale-100\" x-transition:leave-end=\"opacity-0 scale-95\" class=\"mt-2\">\n                    {specs_html}\n                    {award_html}\n                </div>\n            </div>\n            """
+        html += "</div>"
+    html += "</div>"
     return html
 
 def main():
